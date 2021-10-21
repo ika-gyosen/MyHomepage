@@ -1,5 +1,11 @@
 .imageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.imageStyle {
   position: relative;
-  aspect-ratio: 1 / 1;
-  height:300px
+  aspect-ratio: 4 / 3;
+  width:50%;
 }

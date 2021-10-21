@@ -18,7 +18,9 @@ function ImageBlock({
 >) {
   return (
     <div className={style.imageWrapper}>
-      <Image src={src || ""} alt={alt} layout="fill" objectFit={"contain"} />
+      <div className={style.imageStyle}>
+        <Image src={src || ""} alt={alt} layout="fill" objectFit={"contain"} />
+      </div>
     </div>
   );
 }
