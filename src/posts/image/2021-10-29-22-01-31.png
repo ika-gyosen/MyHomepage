@@ -1,0 +1,59 @@
+# 環境変数
+export LC_CTYPE=ja_JP.UTF-8
+export KCODE=u           # KCODEにUTF-8を設定
+
+# yarn の環境変数
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# npm globalのpath
+export PATH=~/.npm-global/bin:$PATH
+
+## 色を使用出来るようにする
+autoload -Uz colors
+colors
+## 補完機能を有効にする カーソルで選択する
+autoload -Uz compinit
+compinit
+zstyle ':completion:*:default' menu select=1
+# エディタをvimに設定
+export EDITOR=vim
+## タブ補完時に大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+## 日本語ファイル名を表示可能にする
+setopt print_eight_bit
+## ヒストリの設定
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+# cdした際のディレクトリをディレクトリスタックへ自動追加
+setopt auto_pushd
+# ディレクトリスタックへの追加の際に重複させない
+setopt pushd_ignore_dups
+# cdコマンドを省略して、ディレクトリ名のみの入力で移動
+setopt auto_cd
+# ヒストリーに重複を表示しない
+setopt histignorealldups
+# 他のターミナルとヒストリーを共有
+setopt share_history
+# すでにhistoryにあるコマンドは残さない
+setopt hist_ignore_all_dups
+## PROMPT
+ PROMPT="%F{red}★ %f%F{cyan}%~%f: $ "
+
+alias dcexec='(){docker-compose exec $1 bash}'
+alias dcash='(){docker-compose exec $1 ash}'
+alias restart='(){docker-compose restart $1}'
+alias stop='(){docker-compose stop $1}'
+alias dcrm='(){docker-compose stop $1; echo y | docker-compose rm $1}'
+alias dcreup='(){docker-compose stop $1; echo y | docker-compose rm $1;docker-compose up -d $1}'
+alias dcup='(){docker-compose up -d $1}'
+alias dcps='(){docker-compose ps}'
+alias dclogs='(){docker-compose logs $1}'
+alias dcbuild='(){docker-compose stop $1; echo y | docker-compose rm $1;docker-compose build --force-rm $1; docker-compose up -d $1}'
+alias dcbuildnew='(){docker-compose stop $1; echo y | docker-compose rm $1;docker-compose build --force-rm --no-cache $1; docker-compose up -d $1}'
+alias mongorm='(){docker-compose stop mongo;sudo rm -rf ./mongo-seed/data/db/*; docker-compose restart mongo;docker-compose restart mongo-express}'
+alias open='(){explorer.exe $1}'
+
+[ -z ${WSLENV+x} ] || export PATH="${PATH:+"$PATH:"}$HOME/bin/xclip-xsel-WSL"
+
+

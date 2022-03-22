@@ -1,0 +1,1 @@
+[ -z ${WSLENV+x} ] || export PATH="${PATH:+"$PATH:"}$HOME/bin/xclip-xsel-WSL"

@@ -16,10 +16,13 @@ function ImageBlock({
     ImgHTMLAttributes<HTMLImageElement> &
     ReactMarkdownProps
 >) {
+  if (!src) return <p>画像エラー</p>;
+  const path = /^http.*/i.test(src) ? src : `${process.env.PUBLIC_URL}/${src}`;
+  console.log("testaseaset", path);
   return (
     <div className={style.imageWrapper}>
       <div className={style.imageStyle}>
-        <Image src={src || ""} alt={alt} layout="fill" objectFit={"contain"} />
+        <Image src={path} alt={alt} layout="fill" objectFit={"contain"} />
       </div>
     </div>
   );

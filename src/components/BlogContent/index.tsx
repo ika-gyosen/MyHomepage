@@ -6,6 +6,7 @@ import style from "./style.module.scss";
 import unwrapImages from "remark-unwrap-images";
 import ImageBlock from "./ImageBlock";
 import dayjs from "dayjs";
+// import e from "posts/images/e.jpg";
 
 type BlogContentProps = {
   content: string;
@@ -19,6 +20,11 @@ function BlogContent({ content, title, date }: BlogContentProps) {
       <h2>{title}</h2>
       <p>{dayjs(date).format("YYYY年 (MMM)M月D日")}</p>
       <hr />
+      <Image src={require("posts/images/e.jpg").default} alt="a" />
+      {/* <Image src={import("posts/images/e.jpg")} alt="a" /> */}
+
+      {/* <img src={require("posts/images/e.jpg").default} /> */}
+      <Image src="/images/a.png" alt="a" width="100" height="100" />
       <ReactMarkdown
         remarkPlugins={[unwrapImages]}
         components={{

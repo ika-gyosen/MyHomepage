@@ -2,6 +2,7 @@ import BlogContent from "components/BlogContent";
 import * as fs from "fs";
 import React from "react";
 const matter = require("gray-matter");
+import ReactMarkdown from "react-markdown";
 
 type BlogProps = {
   content: string;
@@ -38,11 +39,9 @@ export async function getStaticProps({
 export async function getStaticPaths() {
   const blogFiles = fs.readdirSync("./src/posts/blog");
   return {
-    paths: [
-      ...blogFiles.map((fileName) => {
-        return `/blogs/${fileName.substring(0, fileName.length - 3)}`;
-      }),
-    ],
+    paths: blogFiles.map((fileName) => {
+      return `/blogs/${fileName.substring(0, fileName.length - 3)}`;
+    }),
     fallback: false,
   };
 }
