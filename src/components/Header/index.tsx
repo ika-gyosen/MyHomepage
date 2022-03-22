@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 function Header() {
   return (
     <header>
-      <h1>
+      <h1 className={style.headerLogo}>
         <Link href="/" passHref={true}>
           <a className={style.headerLink}>Minami Beach</a>
         </Link>
