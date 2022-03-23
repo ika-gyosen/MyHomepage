@@ -2,7 +2,7 @@ import Link from "next/link";
 import ScrapboxList from "./ScrapboxList";
 
 type TopProps = {
-  scrapboxItems: [];
+  scrapboxItems: { title: string; date: string }[];
 };
 
 function Top({ scrapboxItems }: TopProps) {

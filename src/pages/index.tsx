@@ -1,9 +1,8 @@
 import axios from "axios";
 import Top from "components/Top";
 import { NextPage } from "next";
-
 type HomeProps = {
-  scrapboxItems: [];
+  scrapboxItems: { title: string; date: string }[];
 };
 
 const Home: NextPage<HomeProps> = ({ scrapboxItems }) => {
@@ -23,7 +22,7 @@ export async function getServerSideProps() {
       params: { limit: 10 },
     });
     const scrpboxPages = pages.map((item: any) => {
-      return { title: item.title, created: item.created };
+      return { title: item.title as string, date: item.created as string };
     });
     return {
       props: {
